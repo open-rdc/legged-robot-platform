@@ -64,16 +64,16 @@ for dev in MOTOR_IDS:
     send_and_receive(ser, make_packet(0x00, dev, 1))
 
 # =========================
-# ② Speedモード
+# ② Positionモード
 #    ※モード番号は仕様に合わせて変更
 # =========================
 for dev in MOTOR_IDS:
-    send_and_receive(ser, make_packet(0x01, dev, 2))  # ←Speedモードが1の場合
+    send_and_receive(ser, make_packet(0x01, dev, 2))  # ←Positionモード：２
 
 # =========================
-# ③ スピード指令（0x20）
-# Data1 = rpm × 100
-# Data2 = mA × 100
+# ③ 角度指令（0x22）
+# Data1 = deg × 100
+# Data2 = mA × 100　　最大電流
 # Data3 = 0
 # =========================
 deg = 0
@@ -91,11 +91,6 @@ for dev in MOTOR_IDS:
 print("All motors running at", deg, "deg")
 
 time.sleep(5)
-
-# =========================
-# ④ 停止（rpm=0）
-# =========================
-##for dev in MOTOR_IDS:send_and_receive(ser,make_packet(0x20, dev, 0, current_value, 0))
 
 # =========================
 # ⑤ OFF
