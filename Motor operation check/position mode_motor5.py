@@ -93,7 +93,7 @@ print("All motors running at", deg, "deg")
 time.sleep(5)
 
 # =========================
-# ⑤ OFF
+# ④ OFF
 # =========================
 for dev in MOTOR_IDS:
     send_and_receive(ser, make_packet(0x00, dev, 0))
